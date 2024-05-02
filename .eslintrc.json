@@ -1,7 +1,10 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nx"],
+  "plugins": ["@nx", "unicorn", "sonarjs", "simple-import-sort", "prettier", "react-hooks"],
+  "parserOptions": {
+    "project": ["tsconfig.*?.json"]
+  },
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -16,6 +19,121 @@
                 "sourceTag": "*",
                 "onlyDependOnLibsWithTags": ["*"]
               }
+            ]
+          }
+        ],
+        "react/display-name": "off",
+        "react/no-unescaped-entities": "off",
+        "sonarjs/no-duplicate-string": "off",
+        "unicorn/no-array-reduce": "off",
+        "@typescript-eslint/consistent-type-imports": "off",
+        "unicorn/no-useless-undefined": "off",
+        "unicorn/no-null": "off",
+        "@typescript-eslint/no-unsafe-call": "warn",
+        "@typescript-eslint/no-misused-promises": [
+          2,
+          {
+            "checksVoidReturn": {
+              "attributes": false
+            }
+          }
+        ],
+        "unicorn/prevent-abbreviations": [
+          "error",
+          {
+            "replacements": {
+              "props": false,
+              "ref": false,
+              "env": false
+            }
+          }
+        ],
+        "unicorn/no-keyword-prefix": "off",
+        "unicorn/no-array-for-each": "off",
+        "unicorn/better-regex": "error",
+        "max-lines-per-function": [
+          "error",
+          {
+            "max": 30,
+            "skipBlankLines": true,
+            "skipComments": true,
+            "IIFEs": true
+          }
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "argsIgnorePattern": "^_",
+            "ignoreRestSiblings": true
+          }
+        ],
+        "unicorn/prefer-string-replace-all": "off",
+        "no-else-return": "error",
+        "unicorn/filename-case": [
+          "error",
+          {
+            "case": "kebabCase"
+          }
+        ],
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "interface",
+            "format": ["PascalCase"],
+            "leadingUnderscore": "forbid",
+            "trailingUnderscore": "forbid"
+          },
+          {
+            "selector": "typeAlias",
+            "format": ["PascalCase"],
+            "leadingUnderscore": "forbid",
+            "trailingUnderscore": "forbid"
+          },
+          {
+            "selector": "variable",
+            "format": ["camelCase", "PascalCase", "UPPER_CASE"],
+            "leadingUnderscore": "forbid",
+            "trailingUnderscore": "forbid"
+          },
+          {
+            "selector": "enum",
+            "format": ["PascalCase"],
+            "leadingUnderscore": "forbid",
+            "trailingUnderscore": "forbid"
+          }
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          {
+            "accessibility": "explicit",
+            "overrides": {
+              "accessors": "explicit",
+              "constructors": "explicit",
+              "methods": "explicit",
+              "properties": "explicit",
+              "parameterProperties": "explicit"
+            }
+          }
+        ],
+        "@typescript-eslint/member-ordering": [
+          "error",
+          {
+            "default": [
+              "public-static-field",
+              "protected-static-field",
+              "private-static-field",
+              "public-instance-field",
+              "protected-instance-field",
+              "private-instance-field",
+              "public-static-method",
+              "protected-static-method",
+              "private-static-method",
+              "public-constructor",
+              "protected-constructor",
+              "private-constructor",
+              "public-instance-method",
+              "protected-instance-method",
+              "private-instance-method"
             ]
           }
         ]

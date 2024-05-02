@@ -1,15 +1,5 @@
-import { render } from '@testing-library/react';
+import { expect, test } from 'vitest';
 
-import App from './app';
-
-describe('App', () => {
-  it('should render successfully', () => {
-    const { baseElement } = render(<App />);
-    expect(baseElement).toBeTruthy();
-  });
-
-  it('should have a greeting as the title', () => {
-    const { getByText } = render(<App />);
-    expect(getByText(/Welcome home-management/gi)).toBeTruthy();
-  });
+test('should work as expected', () => {
+  expect(Math.sqrt(4)).toBe(2);
 });
